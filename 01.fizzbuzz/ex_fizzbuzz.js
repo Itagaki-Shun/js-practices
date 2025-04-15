@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 let cnt = 0;
 while (cnt < 20) {
   cnt++;
