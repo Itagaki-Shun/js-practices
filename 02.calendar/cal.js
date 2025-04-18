@@ -75,3 +75,21 @@ for (let cnt = 0; cnt < 7; cnt++) {
 
 //見栄えを整理
 console.log('\n');
+
+//日にちの表示
+while (f_day <= l_day) {
+    if (f_day < 10) {
+    process.stdout.write('  ' + f_day + ' ');
+    } else {
+    process.stdout.write(' ' + f_day + ' ');
+    }
+    f_day++;
+    f_day_of_week++;
+    if (f_day_of_week == 7) {
+        f_day_of_week = 0;
+        console.log('\n');
+    }
+}
+
+//見栄えを整理
+console.log('\n');
