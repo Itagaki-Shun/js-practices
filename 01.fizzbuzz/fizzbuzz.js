@@ -1,8 +1,6 @@
 #! /usr/bin/env node
 
-let cnt = 0;
-while (cnt < 20) {
-  cnt++;
+for (let cnt = 1; cnt <= 20; cnt++){
   if (cnt % 3 === 0 && cnt % 5 === 0) {
     console.log("FizzBuzz");
   } else if (cnt % 3 === 0) {
