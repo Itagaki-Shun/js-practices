@@ -27,8 +27,15 @@ let month = today.getMonth() + 1;
 let day = today.getDate();
 let day_of_week = today.getDay();
 
-console.log(today);
-console.log(year);
-console.log(month);
-console.log(day);
-console.log(day_of_week);
+//確認用
+// console.log(today);
+// console.log(year);
+// console.log(month);
+// console.log(day);
+// console.log(day_of_week);
+
+//曜日名を格納した配列daysを宣言
+const days = ['日', '月', '火', '水', '木', '金', '土'];
+
+//年月を表示
+console.log('          ' + year + '年' + month + '月\n');
