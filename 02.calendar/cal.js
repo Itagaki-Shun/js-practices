@@ -56,14 +56,22 @@ let l_day = lastDayOfMonth.getDate();
 let l_day_of_week = lastDayOfMonth.getDay();
 
 //確認用（初日）
-console.log(firstDayOfMonth);
-console.log(f_year);
-console.log(f_month);
-console.log(f_day);
-console.log(f_day_of_week);
+// console.log(firstDayOfMonth);
+// console.log(f_year);
+// console.log(f_month);
+// console.log(f_day);
+// console.log(f_day_of_week);
 //確認用（最終日）
-console.log(lastDayOfMonth);
-console.log(l_year);
-console.log(l_month);
-console.log(l_day);
-console.log(l_day_of_week);
+// console.log(lastDayOfMonth);
+// console.log(l_year);
+// console.log(l_month);
+// console.log(l_day);
+// console.log(l_day_of_week);
+
+//カレンダーの曜日を表示
+for (let cnt = 0; cnt < 7; cnt++) {
+    process.stdout.write(' ' + days[cnt] + ' ');
+  }
+
+//見栄えを整理
+console.log('\n');
