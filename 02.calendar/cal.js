@@ -2,8 +2,9 @@
 /* global process*/
 
 //コマンドライン引数を受け取る変数を初期化
-let m = 0;
 let y = 0;
+let m = 0;
+
 
 //コマンドライン引数を格納する配列を用意
 for (let i = 0; i < process.argv.length; ++i) {
@@ -39,3 +40,30 @@ const days = ['日', '月', '火', '水', '木', '金', '土'];
 
 //年月を表示
 console.log('          ' + year + '年' + month + '月\n');
+
+//引き渡された年月の初日とその曜日を求める。各メソッドを使用
+let firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+let f_year = firstDayOfMonth.getFullYear();
+let f_month = firstDayOfMonth.getMonth() + 1;
+let f_day = firstDayOfMonth.getDate();
+let f_day_of_week = firstDayOfMonth.getDay();
+
+//引き渡された年月の最終日とその曜日を求める。各メソッドを使用
+let lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+let l_year = lastDayOfMonth.getFullYear();
+let l_month = lastDayOfMonth.getMonth() + 1;
+let l_day = lastDayOfMonth.getDate();
+let l_day_of_week = lastDayOfMonth.getDay();
+
+//確認用（初日）
+console.log(firstDayOfMonth);
+console.log(f_year);
+console.log(f_month);
+console.log(f_day);
+console.log(f_day_of_week);
+//確認用（最終日）
+console.log(lastDayOfMonth);
+console.log(l_year);
+console.log(l_month);
+console.log(l_day);
+console.log(l_day_of_week);
