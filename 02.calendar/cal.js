@@ -75,6 +75,24 @@ for (let cnt = 0; cnt < 7; cnt++) {
 
 //見栄えを整理
 console.log('\n');
+process.stdout.write('  ');
+
+//初日が日曜日ではなかった時に表示のずれを修正するために条件分岐で空白を設ける
+if (f_day_of_week != 0) {
+    if (f_day_of_week == 1) {
+      process.stdout.write('  ');
+    } else if (f_day_of_week == 2) {
+      process.stdout.write('      ');
+    } else if (f_day_of_week == 3) {
+      process.stdout.write('          ');
+    } else if (f_day_of_week == 4) {
+      process.stdout.write('              ');
+    } else if (f_day_of_week == 5) {
+      process.stdout.write('                  ');
+    } else if (f_day_of_week == 6) {
+      process.stdout.write('                      ');
+    }
+}
 
 //日にちの表示
 while (f_day <= l_day) {
