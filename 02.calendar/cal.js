@@ -51,11 +51,8 @@ let month = today.getMonth() + 1;
 //曜日名を格納した配列daysを宣言
 const days = ["日", "月", "火", "水", "木", "金", "土"];
 
-//見栄えを整理
-console.log("\n");
-
 //年月を表示
-console.log("          " + month + "月" + year + "\n");
+console.log("       " + month + "月 " + year);
 
 //引き渡された年月の初日とその曜日を求める。各メソッドを使用
 let firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
@@ -76,46 +73,45 @@ let l_day = lastDayOfMonth.getDate();
 
 //カレンダーの曜日を表示
 for (let cnt = 0; cnt < 7; cnt++) {
-  process.stdout.write(" " + days[cnt] + " ");
+  process.stdout.write(" " + days[cnt]);
 }
 
 //見栄えを整理
-console.log("\n");
-if(f_day_of_week > 0){
+console.log("");
+if (f_day_of_week > 0) {
   process.stdout.write("  ");
 }
 
 //初日が日曜日ではなかった時に表示のずれを修正するために条件分岐で空白を設ける
 
-  if (f_day_of_week === 1) {
-    process.stdout.write("  ");
-  } else if (f_day_of_week === 2) {
-    process.stdout.write("      ");
-  } else if (f_day_of_week === 3) {
-    process.stdout.write("          ");
-  } else if (f_day_of_week === 4) {
-    process.stdout.write("              ");
-  } else if (f_day_of_week === 5) {
-    process.stdout.write("                  ");
-  } else if (f_day_of_week === 6) {
-    process.stdout.write("                      ");
-  }
-
+if (f_day_of_week === 1) {
+  process.stdout.write("  ");
+} else if (f_day_of_week === 2) {
+  process.stdout.write("    ");
+} else if (f_day_of_week === 3) {
+  process.stdout.write("       ");
+} else if (f_day_of_week === 4) {
+  process.stdout.write("          ");
+} else if (f_day_of_week === 5) {
+  process.stdout.write("             ");
+} else if (f_day_of_week === 6) {
+  process.stdout.write("                ");
+}
 
 //日にちの表示
 while (f_day <= l_day) {
   if (f_day < 10) {
-    process.stdout.write("  " + f_day + " ");
+    process.stdout.write("  " + f_day);
   } else {
-    process.stdout.write(" " + f_day + " ");
+    process.stdout.write(" " + f_day);
   }
   f_day++;
   f_day_of_week++;
   if (f_day_of_week == 7) {
     f_day_of_week = 0;
-    console.log("\n");
+    console.log(" ");
   }
 }
 
 //見栄えを整理
-console.log("\n");
+console.log("");
