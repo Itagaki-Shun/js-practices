@@ -1,18 +1,18 @@
 #! /usr/bin/env node
 
-let y = 0;
-let m = 0;
+let Argument_Year;
+let Argument_Month = -1;
 
 for (let i = 0; i < process.argv.length; ++i) {
   if (process.argv[i] === "-y") {
-    y = process.argv[i + 1];
-  } else if (process.argv[i] === "-m") {
-    m = process.argv[i + 1];
+    Argument_Year = process.argv[i + 1];
   }
 }
-
-m = m - 1;
-
+for (let i = 0; i < process.argv.length; ++i) {
+  if (process.argv[i] === "-m") {
+    Argument_Month += Number(process.argv[i + 1]);
+  }
+}
 
 let today = new Date();
 
@@ -20,17 +20,12 @@ let today = new Date();
 let nowYaer = new Date().getFullYear();
 let nowMonth = new Date().getMonth();
 
-if (y === 0 && m === -1) {
-  today = new Date();
-}
-else if (y > 0 && m >= 0) {
-  today = new Date(y, m);
-}
-else if (y > 0) {
-  today = new Date(y, nowMonth);
-}
-else if (m > 0) {
-  today = new Date(nowYaer, m);
+if (Argument_Year > 0 && Argument_Month > 0) {
+  today = new Date(Argument_Year, Argument_Month);
+} else if (Argument_Year > 0) {
+  today = new Date(Argument_Year, nowMonth);
+} else if (Argument_Month > 0) {
+  today = new Date(nowYaer, Argument_Month);
 }
 
 let year = today.getFullYear();
@@ -45,8 +40,8 @@ let lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 let l_day = lastDayOfMonth.getDate();
 
 const days = ["日", "月", "火", "水", "木", "金", "土"];
-for (let cnt = 0; cnt < 7; cnt++) {
-  process.stdout.write(" " + days[cnt]);
+for (let count = 0; count < 7; count++) {
+  process.stdout.write(`${days[count]} `);
 }
 
 console.log("");
