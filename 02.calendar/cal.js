@@ -48,28 +48,25 @@ if (f_day_of_week > 0) {
   process.stdout.write(`  `);
 }
 
-//初日が日曜日ではなかった時に表示のずれを修正するために条件分岐で空白を設ける
-if (f_day_of_week === 1) {
-  process.stdout.write(`  `);
-} else if (f_day_of_week === 2) {
-  process.stdout.write(`    `);
-} else if (f_day_of_week === 3) {
-  process.stdout.write(`       `);
-} else if (f_day_of_week === 4) {
-  process.stdout.write(`          `);
-} else if (f_day_of_week === 5) {
-  process.stdout.write(`             `);
-} else if (f_day_of_week === 6) {
-  process.stdout.write('                ');
-}
-
-//カレンダーの表示
+let space = `   `;
 for (let day = 1; day <= l_day; day++) {
-  if (day < 10) {
-    process.stdout.write(`  ${day}`);
-  } else {
-    process.stdout.write(` ${day}`);
+  if (f_day_of_week > 0 && day === 1) {
+    for (let i = 1; i < f_day_of_week; i++) {
+      process.stdout.write(space);
+    }
   }
+  if (
+    (day < 10 && f_day_of_week === 0) ||
+    (day > 10 && f_day_of_week !== 0) ||
+    (day === 10 && f_day_of_week !== 0)
+  ) {
+    process.stdout.write(` ${day}`);
+  } else if (f_day_of_week === 0) {
+    process.stdout.write(`${day}`);
+  } else {
+    process.stdout.write(`  ${day}`);
+  }
+
   f_day_of_week++;
   if (f_day_of_week == 7) {
     f_day_of_week = 0;
