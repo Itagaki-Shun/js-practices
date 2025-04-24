@@ -31,10 +31,9 @@ if (Argument_Year > 0 && Argument_Month > 0) {
 let year = today.getFullYear();
 let month = today.getMonth() + 1;
 
-console.log("       " + month + "月 " + year);
+console.log(`      ${month}月 ${year}`);
 
 let firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-let f_day = firstDayOfMonth.getDate();
 let f_day_of_week = firstDayOfMonth.getDay();
 let lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 let l_day = lastDayOfMonth.getDate();
@@ -65,17 +64,16 @@ if (f_day_of_week === 1) {
 }
 
 //カレンダーの表示
-while (f_day <= l_day) {
-  if (f_day < 10) {
-    process.stdout.write("  " + f_day);
+for (let day = 1; day <= l_day; day++) {
+  if (day < 10) {
+    process.stdout.write("  " + day);
   } else {
-    process.stdout.write(" " + f_day);
+    process.stdout.write(" " + day);
   }
-  f_day++;
   f_day_of_week++;
   if (f_day_of_week == 7) {
     f_day_of_week = 0;
-    console.log(" ");
+    console.log("");
   }
 }
 
