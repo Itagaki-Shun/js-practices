@@ -1,22 +1,21 @@
 #! /usr/bin/env node
 
 let argumentYear;
-let argumentMonth = -1;
-
-for (let i = 0; i < process.argv.length; ++i) {
-  if (process.argv[i] === `-y`) {
-    argumentYear = process.argv[i + 1];
+let argumentMonth;
+let index = process.argv.findIndex(arg => arg === '-y');
+if (index !== -1 && index + 1 < process.argv.length){
+  argumentYear = process.argv[index + 1];
+}
+index = process.argv.findIndex(arg => arg === '-m');
+let jugmentJanniary;
+if (index !== -1 && index + 1 < process.argv.length){
+  if(process.argv[index + 1] >= 0){
+  argumentMonth = process.argv[index + 1] - 1;
   }
 }
-for (let i = 0; i < process.argv.length; ++i) {
-  if (process.argv[i] === `-m`) {
-    argumentMonth += Number(process.argv[i + 1]);
-  }
-}
-
 let day = new Date();
 let nowYaer = new Date().getFullYear();
-let nowMonth = new Date().getMonth();
+let nowMonth = new Date().getMonth() + 1;
 
 if (argumentYear > 0 && argumentMonth > 0) {
   day = new Date(argumentYear, argumentMonth);
@@ -28,7 +27,6 @@ if (argumentYear > 0 && argumentMonth > 0) {
 
 const year = day.getFullYear();
 const month = day.getMonth() + 1;
-
 console.log(`      ${month}月 ${year}`);
 
 let firstDayOfMonth = new Date(day.getFullYear(), day.getMonth(), 1);
@@ -36,10 +34,9 @@ let f_day_of_week = firstDayOfMonth.getDay();
 let lastDayOfMonth = new Date(day.getFullYear(), day.getMonth() + 1, 0);
 let l_day = lastDayOfMonth.getDate();
 
-const days = [`日`, ` 月`, ` 火`, ` 水`, ` 木`, ` 金`, ` 土`];
-for (let count = 0; count < 7; count++) {
-  process.stdout.write(`${days[count]}`);
-}
+const days = [`日 月 火 水 木 金 土`];
+process.stdout.write(`${days}`);
+
 
 console.log(``);
 if (f_day_of_week > 0) {
