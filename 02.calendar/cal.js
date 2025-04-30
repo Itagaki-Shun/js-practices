@@ -2,12 +2,12 @@
 
 let argumentYear;
 let argumentMonth;
+
 let index = process.argv.findIndex(arg => arg === '-y');
 if (index !== -1 && index + 1 < process.argv.length){
   argumentYear = process.argv[index + 1];
 }
 index = process.argv.findIndex(arg => arg === '-m');
-let jugmentJanniary;
 if (index !== -1 && index + 1 < process.argv.length){
   if(process.argv[index + 1] >= 0){
   argumentMonth = process.argv[index + 1] - 1;
@@ -17,11 +17,11 @@ let day = new Date();
 let nowYaer = new Date().getFullYear();
 let nowMonth = new Date().getMonth() + 1;
 
-if (argumentYear > 0 && argumentMonth > 0) {
+if (argumentYear >= 0 && argumentMonth >= 0) {
   day = new Date(argumentYear, argumentMonth);
-} else if (argumentYear > 0) {
+} else if (argumentYear >= 0) {
   day = new Date(argumentYear, nowMonth);
-} else if (argumentMonth > 0) {
+} else if (argumentMonth >= 0) {
   day = new Date(nowYaer, argumentMonth);
 }
 
@@ -44,22 +44,22 @@ if (f_day_of_week > 0) {
 }
 
 let space = `   `;
-for (let i = 1; i <= l_day; i++) {
-  if (f_day_of_week > 0 && i === 1) {
-    for (let i = 1; i < f_day_of_week; i++) {
-      process.stdout.write(space);
-    }
+if (f_day_of_week > 0) {
+  for (let i = 1; i < f_day_of_week; i++) {
+    process.stdout.write(space);
   }
+}
+for (let date = 1; date <= l_day; date++) {
   if (
-    (i < 10 && f_day_of_week === 0) ||
-    (i > 10 && f_day_of_week !== 0) ||
-    (i === 10 && f_day_of_week !== 0)
+    (date < 10 && f_day_of_week === 0) ||
+    (date > 10 && f_day_of_week !== 0) ||
+    (date === 10 && f_day_of_week !== 0)
   ) {
-    process.stdout.write(` ${i}`);
+    process.stdout.write(` ${date}`);
   } else if (f_day_of_week === 0) {
-    process.stdout.write(`${i}`);
+    process.stdout.write(`${date}`);
   } else {
-    process.stdout.write(`  ${i}`);
+    process.stdout.write(`  ${date}`);
   }
 
   f_day_of_week++;
