@@ -30,9 +30,7 @@ const month = day.getMonth() + 1;
 console.log(`      ${month}月 ${year}`);
 
 let firstDayOfMonth = new Date(day.getFullYear(), day.getMonth(), 1);
-let f_day_of_week = firstDayOfMonth.getDay();
 let lastDayOfMonth = new Date(day.getFullYear(), day.getMonth() + 1, 0);
-let l_day = lastDayOfMonth.getDate();
 
 const days = [`日 月 火 水 木 金 土`];
 process.stdout.write(`${days}`);
@@ -43,24 +41,28 @@ if (firstDayOfMonth.getDay() > 0) {
   process.stdout.write(`  ${space.repeat(firstDayOfMonth.getDay() - 1)}`);
 }
 
-for (let date = 1; date <= l_day; date++) {
-  if (
-    (date < 10 && f_day_of_week === 0) ||
-    (date >= 10 && f_day_of_week !== 0) ||
-    (day === 10 && f_day_of_week !== 0)
+for (
+  let date = firstDayOfMonth.getDate();
+  date <= lastDayOfMonth.getDate();
+  date++
+) {
+  // 10以上（二桁）で日曜日のときはスペースを開けずに表示する
+  if (date >= 10 && (firstDayOfMonth.getDay() + date) % 7 === 1) {
+    process.stdout.write(`${date}`);
+  }
+  // 10以上（二桁）と、10未満（1桁）で日曜日のときは半角スペースを一つ開けて表示する
+  else if (
+    date >= 10 ||
+    (date < 10 && (firstDayOfMonth.getDay() + date) % 7 === 1)
   ) {
     process.stdout.write(` ${date}`);
-  } else if (f_day_of_week === 0) {
-    process.stdout.write(`${date}`);
-  } else {
+  }
+  // 1桁の時は半角スペースを二つ開けて表示する（日曜日以外）
+  else {
     process.stdout.write(`  ${date}`);
   }
-
-  f_day_of_week++;
-  if (f_day_of_week == 7) {
-    f_day_of_week = 0;
+  if ((firstDayOfMonth.getDay() + date) % 7 === 0) {
     console.log(``);
   }
 }
-
 console.log(``);
