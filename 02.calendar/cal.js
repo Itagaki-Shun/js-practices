@@ -3,14 +3,14 @@
 let argumentYear;
 let argumentMonth;
 
-let index = process.argv.findIndex(arg => arg === '-y');
-if (index !== -1 && index + 1 < process.argv.length){
+let index = process.argv.findIndex((arg) => arg === "-y");
+if (index !== -1 && index + 1 < process.argv.length) {
   argumentYear = process.argv[index + 1];
 }
-index = process.argv.findIndex(arg => arg === '-m');
-if (index !== -1 && index + 1 < process.argv.length){
-  if(process.argv[index + 1] >= 0){
-  argumentMonth = process.argv[index + 1] - 1;
+index = process.argv.findIndex((arg) => arg === "-m");
+if (index !== -1 && index + 1 < process.argv.length) {
+  if (process.argv[index + 1] >= 0) {
+    argumentMonth = process.argv[index + 1] - 1;
   }
 }
 let day = new Date();
@@ -37,23 +37,17 @@ let l_day = lastDayOfMonth.getDate();
 const days = [`日 月 火 水 木 金 土`];
 process.stdout.write(`${days}`);
 
-
 console.log(``);
-if (f_day_of_week > 0) {
-  process.stdout.write(`  `);
+let space = `   `;
+if (firstDayOfMonth.getDay() > 0) {
+  process.stdout.write(`  ${space.repeat(firstDayOfMonth.getDay() - 1)}`);
 }
 
-let space = `   `;
-if (f_day_of_week > 0) {
-  for (let i = 1; i < f_day_of_week; i++) {
-    process.stdout.write(space);
-  }
-}
 for (let date = 1; date <= l_day; date++) {
   if (
     (date < 10 && f_day_of_week === 0) ||
-    (date > 10 && f_day_of_week !== 0) ||
-    (date === 10 && f_day_of_week !== 0)
+    (date >= 10 && f_day_of_week !== 0) ||
+    (day === 10 && f_day_of_week !== 0)
   ) {
     process.stdout.write(` ${date}`);
   } else if (f_day_of_week === 0) {
