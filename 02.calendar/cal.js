@@ -25,11 +25,8 @@ console.log(`      ${designatedDate.getMonth() + 1}月 ${designatedDate.getFullY
 let firstDayOfMonth = new Date(designatedDate.getFullYear(), designatedDate.getMonth(), 1);
 let lastDayOfMonth = new Date(designatedDate.getFullYear(), designatedDate.getMonth() + 1, 0);
 
-const days = [`日 月 火 水 木 金 土`];
-process.stdout.write(`${days}`);
-
-console.log(``);
-let space = `   `;
+process.stdout.write('日 月 火 水 木 金 土\n');
+let space = '   ';
 if (firstDayOfMonth.getDay() > 0) {
   process.stdout.write(`  ${space.repeat(firstDayOfMonth.getDay() - 1)}`);
 }
