@@ -11,24 +11,29 @@ index = process.argv.findIndex((arg) => arg === "-m");
 if (index !== -1 && index + 1 < process.argv.length) {
   argumentMonth = process.argv[index + 1] - 1;
 }
-let day = new Date();
-let nowYaer = new Date().getFullYear();
-let nowMonth = new Date().getMonth() + 1;
 
-if (argumentYear >= 0 && argumentMonth >= 0) {
-  day = new Date(argumentYear, argumentMonth);
-} else if (argumentYear >= 0) {
-  day = new Date(argumentYear, nowMonth);
-} else if (argumentMonth >= 0) {
-  day = new Date(nowYaer, argumentMonth);
+let designatedDate = new Date();
+if (argumentYear >= 0) {
+  designatedDate.setFullYear(argumentYear);
+}
+if (argumentMonth >= 0) {
+  designatedDate.setMonth(argumentMonth);
 }
 
-const year = day.getFullYear();
-const month = day.getMonth() + 1;
-console.log(`      ${month}月 ${year}`);
+console.log(
+  `      ${designatedDate.getMonth() + 1}月 ${designatedDate.getFullYear()}`,
+);
 
-let firstDayOfMonth = new Date(day.getFullYear(), day.getMonth(), 1);
-let lastDayOfMonth = new Date(day.getFullYear(), day.getMonth() + 1, 0);
+let firstDayOfMonth = new Date(
+  designatedDate.getFullYear(),
+  designatedDate.getMonth(),
+  1,
+);
+let lastDayOfMonth = new Date(
+  designatedDate.getFullYear(),
+  designatedDate.getMonth() + 1,
+  0,
+);
 
 const days = [`日 月 火 水 木 金 土`];
 process.stdout.write(`${days}`);
