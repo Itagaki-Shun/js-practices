@@ -9,9 +9,7 @@ if (index !== -1 && index + 1 < process.argv.length) {
 }
 index = process.argv.findIndex((arg) => arg === "-m");
 if (index !== -1 && index + 1 < process.argv.length) {
-  if (process.argv[index + 1] >= 0) {
-    argumentMonth = process.argv[index + 1] - 1;
-  }
+  argumentMonth = process.argv[index + 1] - 1;
 }
 let day = new Date();
 let nowYaer = new Date().getFullYear();
