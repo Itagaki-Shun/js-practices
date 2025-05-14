@@ -35,10 +35,8 @@ let lastDayOfMonth = new Date(
   0,
 );
 
-const days = [`日 月 火 水 木 金 土`];
-process.stdout.write(`${days}`);
+process.stdout.write("日 月 火 水 木 金 土\n");
 
-console.log(``);
 let space = `   `;
 if (firstDayOfMonth.getDay() > 0) {
   process.stdout.write(`  ${space.repeat(firstDayOfMonth.getDay() - 1)}`);
