@@ -37,33 +37,19 @@ let lastDayOfMonth = new Date(
 
 process.stdout.write("日 月 火 水 木 金 土\n");
 
-let space = `   `;
-if (firstDayOfMonth.getDay() > 0) {
-  process.stdout.write(`  ${space.repeat(firstDayOfMonth.getDay() - 1)}`);
-}
+let space = "   ";
+process.stdout.write(`${space.repeat(firstDayOfMonth.getDay())}`);
 
 for (
   let date = firstDayOfMonth.getDate();
   date <= lastDayOfMonth.getDate();
   date++
 ) {
-  // 10以上（二桁）で日曜日のときはスペースを開けずに表示する
-  if (date >= 10 && (firstDayOfMonth.getDay() + date) % 7 === 1) {
-    process.stdout.write(`${date}`);
-  }
-  // 10以上（二桁）と、10未満（1桁）で日曜日のときは半角スペースを一つ開けて表示する
-  else if (
-    date >= 10 ||
-    (date < 10 && (firstDayOfMonth.getDay() + date) % 7 === 1)
-  ) {
-    process.stdout.write(` ${date}`);
-  }
-  // 1桁の時は半角スペースを二つ開けて表示する（日曜日以外）
-  else {
-    process.stdout.write(`  ${date}`);
-  }
-  if ((firstDayOfMonth.getDay() + date) % 7 === 0) {
-    console.log(``);
-  }
+  //土曜日の判定を行う
+  let isSaturday = (firstDayOfMonth.getDay() + date) % 7 === 0;
+  //1桁と2桁で表示を分ける（1桁：半角スペースを1つ設ける 2桁：そのまま表示）
+  let dateStr = date < 10 ? ` ${date}` : `${date}`;
+  //カレンダーの日付表示（土曜日の場合改行、そのほかは半角スペースを1つ設ける）
+  process.stdout.write(dateStr + (isSaturday ? "\n" : " "));
 }
 console.log(``);
