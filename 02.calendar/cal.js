@@ -12,28 +12,20 @@ if (index !== -1 && index + 1 < process.argv.length) {
   argumentMonth = process.argv[index + 1] - 1;
 }
 
-const designatedDate = new Date();
+let designatedYear = new Date().getFullYear();
+let designatedMonth = new Date().getMonth();
+
 if (argumentYear != undefined) {
-  designatedDate.setFullYear(argumentYear);
+  designatedYear = argumentYear;
 }
 if (argumentMonth != undefined) {
-  designatedDate.setMonth(argumentMonth);
+  designatedMonth = argumentMonth;
 }
 
-console.log(
-  `      ${designatedDate.getMonth() + 1}月 ${designatedDate.getFullYear()}`,
-);
+console.log(`      ${designatedMonth + 1}月 ${designatedYear}`);
 
-let firstDayOfMonth = new Date(
-  designatedDate.getFullYear(),
-  designatedDate.getMonth(),
-  1,
-);
-let lastDayOfMonth = new Date(
-  designatedDate.getFullYear(),
-  designatedDate.getMonth() + 1,
-  0,
-);
+let firstDayOfMonth = new Date(designatedYear, designatedMonth, 1);
+let lastDayOfMonth = new Date(designatedYear, designatedMonth + 1, 0);
 
 process.stdout.write("日 月 火 水 木 金 土\n");
 
