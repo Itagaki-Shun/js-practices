@@ -37,11 +37,14 @@ for (
   date <= lastDayOfMonth.getDate();
   date++
 ) {
-  //土曜日の判定を行う
+  // 土曜日の判定を行う
   let isSaturday = (firstDayOfMonth.getDay() + date) % 7 === 0;
-  //1桁と2桁で表示を分ける（1桁：半角スペースを1つ設ける 2桁：そのまま表示）
+
   let dateStr = date < 10 ? ` ${date}` : `${date}`;
-  //カレンダーの日付表示（土曜日の場合改行、そのほかは半角スペースを1つ設ける）
-  process.stdout.write(dateStr + (isSaturday ? "\n" : " "));
+
+  if (date === lastDayOfMonth.getDate() || isSaturday) {
+    process.stdout.write(dateStr + "\n");
+  } else {
+    process.stdout.write(dateStr + " ");
+  }
 }
-console.log(``);
