@@ -12,7 +12,7 @@ if (index !== -1 && index + 1 < process.argv.length) {
   argumentMonth = process.argv[index + 1] - 1;
 }
 
-let designatedDate = new Date();
+const designatedDate = new Date();
 if (argumentYear >= 0) {
   designatedDate.setFullYear(argumentYear);
 }
