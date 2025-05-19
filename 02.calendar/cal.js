@@ -13,10 +13,10 @@ if (index !== -1 && index + 1 < process.argv.length) {
 }
 
 const designatedDate = new Date();
-if (argumentYear >= 0) {
+if (argumentYear != undefined) {
   designatedDate.setFullYear(argumentYear);
 }
-if (argumentMonth >= 0) {
+if (argumentMonth != undefined) {
   designatedDate.setMonth(argumentMonth);
 }
 
