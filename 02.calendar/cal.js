@@ -28,7 +28,8 @@ console.log(`      ${designatedMonth + 1}月 ${designatedYear}`);
 let firstDayOfMonth = new Date(designatedYear, designatedMonth, 1);
 let lastDayOfMonth = new Date(designatedYear, designatedMonth + 1, 0);
 
-process.stdout.write("日 月 火 水 木 金 土\n");
+process.stdout.write("日 月 火 水 木 金 土");
+console.log();
 
 let space = "   ";
 process.stdout.write(`${space.repeat(firstDayOfMonth.getDay())}`);
@@ -44,7 +45,8 @@ for (
   let dateStr = date < 10 ? ` ${date}` : `${date}`;
 
   if (date === lastDayOfMonth.getDate() || isSaturday) {
-    process.stdout.write(dateStr + "\n");
+    process.stdout.write(dateStr);
+    console.log();
   } else {
     process.stdout.write(dateStr + " ");
   }
