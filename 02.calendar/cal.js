@@ -16,10 +16,10 @@ const designatedDate = new Date();
 let designatedYear = designatedDate.getFullYear();
 let designatedMonth = designatedDate.getMonth();
 
-if (argumentYear != undefined) {
+if (argumentYear !== undefined) {
   designatedYear = argumentYear;
 }
-if (argumentMonth != undefined) {
+if (argumentMonth !== undefined) {
   designatedMonth = argumentMonth;
 }
 
