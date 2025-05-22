@@ -12,8 +12,9 @@ if (index !== -1 && index + 1 < process.argv.length) {
   argumentMonth = process.argv[index + 1] - 1;
 }
 
-let designatedYear = new Date().getFullYear();
-let designatedMonth = new Date().getMonth();
+const designatedDate = new Date();
+let designatedYear = designatedDate.getFullYear();
+let designatedMonth = designatedDate.getMonth();
 
 if (argumentYear != undefined) {
   designatedYear = argumentYear;
