@@ -31,8 +31,7 @@ let lastDayOfMonth = new Date(designatedYear, designatedMonth + 1, 0);
 process.stdout.write("日 月 火 水 木 金 土");
 console.log();
 
-let space = "   ";
-process.stdout.write(`${space.repeat(firstDayOfMonth.getDay())}`);
+process.stdout.write("   ".repeat(firstDayOfMonth.getDay()));
 
 for (
   let date = firstDayOfMonth.getDate();
