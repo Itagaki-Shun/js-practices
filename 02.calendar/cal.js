@@ -47,6 +47,6 @@ for (
     process.stdout.write(dateStr);
     console.log();
   } else {
-    process.stdout.write(dateStr + " ");
+    process.stdout.write(`${dateStr} `);
   }
 }
