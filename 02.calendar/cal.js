@@ -1,26 +1,16 @@
 #! /usr/bin/env node
 
-let argumentYear;
-let argumentMonth;
-
-let index = process.argv.findIndex((arg) => arg === "-y");
-if (index !== -1 && index + 1 < process.argv.length) {
-  argumentYear = process.argv[index + 1];
-}
-index = process.argv.findIndex((arg) => arg === "-m");
-if (index !== -1 && index + 1 < process.argv.length) {
-  argumentMonth = process.argv[index + 1] - 1;
-}
-
 const designatedDate = new Date();
 let designatedYear = designatedDate.getFullYear();
 let designatedMonth = designatedDate.getMonth();
 
-if (argumentYear !== undefined) {
-  designatedYear = argumentYear;
+let index = process.argv.findIndex((arg) => arg === "-y");
+if (index !== -1 && index + 1 < process.argv.length) {
+  designatedYear = process.argv[index + 1];
 }
-if (argumentMonth !== undefined) {
-  designatedMonth = argumentMonth;
+index = process.argv.findIndex((arg) => arg === "-m");
+if (index !== -1 && index + 1 < process.argv.length) {
+  designatedMonth = process.argv[index + 1] - 1;
 }
 
 console.log(`      ${designatedMonth + 1}月 ${designatedYear}`);
