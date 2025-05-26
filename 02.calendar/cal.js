@@ -25,8 +25,8 @@ if (argumentMonth !== undefined) {
 
 console.log(`      ${designatedMonth + 1}月 ${designatedYear}`);
 
-let firstDayOfMonth = new Date(designatedYear, designatedMonth, 1);
-let lastDayOfMonth = new Date(designatedYear, designatedMonth + 1, 0);
+const firstDayOfMonth = new Date(designatedYear, designatedMonth, 1);
+const lastDayOfMonth = new Date(designatedYear, designatedMonth + 1, 0);
 
 process.stdout.write("日 月 火 水 木 金 土");
 console.log();
