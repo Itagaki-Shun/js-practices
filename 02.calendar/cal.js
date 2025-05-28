@@ -28,7 +28,7 @@ for (
   date++
 ) {
   // 土曜日の判定を行う
-  let isSaturday = (firstDayOfMonth.getDay() + date) % 7 === 0;
+  let isSaturday = (firstDayOfMonth.getDay() + date - 1) % 7 === 6;
 
   const isLastDay = date === lastDayOfMonth.getDate();
 
