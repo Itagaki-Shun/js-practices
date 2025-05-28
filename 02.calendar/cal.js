@@ -30,11 +30,13 @@ for (
   // 土曜日の判定を行う
   let isSaturday = (firstDayOfMonth.getDay() + date) % 7 === 0;
 
-  const lastDay = date === lastDayOfMonth.getDate();
+  const isLastDay = date === lastDayOfMonth.getDate();
 
   let dateStr = date < 10 ? ` ${date}` : `${date}`;
 
-  lastDay || isSaturday
-    ? console.log(dateStr)
-    : process.stdout.write(`${dateStr} `);
+  if (isLastDay || isSaturday) {
+    console.log(dateStr);
+  } else {
+    process.stdout.write(`${dateStr} `);
+  }
 }
