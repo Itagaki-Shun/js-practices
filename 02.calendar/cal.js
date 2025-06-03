@@ -31,7 +31,7 @@ for (
   const isSaturday = (firstDayOfMonth.getDay() + date - 1) % 7 === 6;
   const isLastDay = date === lastDayOfMonth.getDate();
 
-  let dateStr = date < 10 ? ` ${date}` : `${date}`;
+  const dateStr = date < 10 ? ` ${date}` : `${date}`;
 
   if (isSaturday || isLastDay) {
     console.log(dateStr);
